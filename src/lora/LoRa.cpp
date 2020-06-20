@@ -516,8 +516,7 @@ void LoRaClass::handleDio0Rise()
     // set FIFO address to current RX address
     writeRegister(REG_FIFO_ADDR_PTR, readRegister(REG_FIFO_RX_CURRENT_ADDR));
     if (_onReceive) { _onReceive(packetLength); }
-    // reset FIFO address
-    writeRegister(REG_FIFO_ADDR_PTR, 0);
+
   }
 }
 
