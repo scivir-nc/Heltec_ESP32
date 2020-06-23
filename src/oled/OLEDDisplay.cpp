@@ -883,6 +883,20 @@ bool OLEDDisplay::setLogBuffer(uint16_t lines, uint16_t chars){
   return true;
 }
 
+bool OLEDDisplay::log(const char *format, ...) {
+    va_list args;
+    char buffer[30];
+    va_start(args, format);
+    clear();
+    vsprintf(buffer, format, args);
+    println(buffer);
+    drawLogBuffer(0, 0);
+    display();  
+    va_end(args);
+
+    return true;
+}
+
 size_t OLEDDisplay::write(uint8_t c) {
   if (this->logBufferSize > 0) {
     // Don't waste space on \r\n line endings, dropping \r

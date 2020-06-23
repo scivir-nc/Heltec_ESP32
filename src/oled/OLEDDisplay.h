@@ -277,6 +277,9 @@ class OLEDDisplay : public Print {
     // the output may be truncated due to the size constraint.
     bool setLogBuffer(uint16_t lines, uint16_t chars);
 
+    // This provides a convenience wrapper to the log buffer for logging single lines of text
+    bool log(const char *format, ...);
+
     // Draw the log buffer at position (x, y)
     void drawLogBuffer(uint16_t x, uint16_t y);
 
